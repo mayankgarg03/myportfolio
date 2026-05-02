@@ -1,0 +1,37 @@
+@import 'tailwindcss';
+
+/* Manual theme toggle: dark: utilities follow the .dark class on <html>, not OS preference */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    color-scheme: light;
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-white text-zinc-900 antialiased transition-colors duration-300;
+    font-family: var(--font-sans);
+  }
+
+  .dark body {
+    @apply bg-neutral-950 text-zinc-100;
+  }
+
+  ::selection {
+    @apply bg-sky-200 text-zinc-900;
+  }
+
+  .dark ::selection {
+    @apply bg-sky-500/35 text-white;
+  }
+}

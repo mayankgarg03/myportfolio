@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary defaults — overridden per-route by the <SEO> component for JS-aware
+         crawlers (Google). Social scrapers (LinkedIn, X, Slack, WhatsApp, etc.) do
+         not run JS, so these defaults are what they will see. -->
+    <title>Mayank Garg — Senior Software Engineer & MERN Developer</title>
+    <meta
+      name="description"
+      content="Mayank Garg — Senior Software Engineer based in Delhi, India. Building scalable apps with React, Next.js, Node.js, and AWS. Available for freelance and full-time work."
+    />
+    <meta name="author" content="Mayank Garg" />
+    <meta name="keywords" content="Mayank Garg, Senior Software Engineer, MERN Developer, React, Next.js, Node.js, NestJS, AWS, Portfolio, Delhi, Full-stack Developer" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href="https://mayank-garg.vercel.app/" />
+
+    <!-- Theme color drives mobile browser chrome -->
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)" />
+    <meta name="color-scheme" content="light dark" />
+
+    <!-- Icons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+
+    <!-- Open Graph (Facebook, LinkedIn, Slack, WhatsApp, Discord, …) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Mayank Garg" />
+    <meta property="og:url" content="https://mayank-garg.vercel.app/" />
+    <meta property="og:title" content="Mayank Garg — Senior Software Engineer & MERN Developer" />
+    <meta
+      property="og:description"
+      content="Building scalable apps with clean architecture, thoughtful APIs, and interfaces people enjoy using."
+    />
+    <meta property="og:image" content="https://mayank-garg.vercel.app/og-default.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Mayank Garg — Senior Software Engineer & MERN Developer" />
+    <meta
+      name="twitter:description"
+      content="Building scalable apps with clean architecture, thoughtful APIs, and interfaces people enjoy using."
+    />
+    <meta name="twitter:image" content="https://mayank-garg.vercel.app/og-default.png" />
+
+    <!-- Fonts: preconnect + non-blocking load -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- JSON-LD: Person schema (default — Home page also emits a richer one client-side) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Mayank Garg",
+        "jobTitle": "Senior Software Engineer",
+        "url": "https://mayank-garg.vercel.app/",
+        "image": "https://mayank-garg.vercel.app/og-default.png",
+        "address": { "@type": "PostalAddress", "addressLocality": "Delhi", "addressCountry": "IN" },
+        "sameAs": [
+          "https://github.com/mayankgarg03",
+          "https://www.linkedin.com/in/mayank-garg-ab7a26183"
+        ]
+      }
+    </script>
+
+    <!-- Theme bootstrap (no FOUC). Must run before React mounts. -->
+    <script>
+      ;(function () {
+        try {
+          var v = localStorage.getItem('portfolio-theme')
+          var root = document.documentElement
+          if (v === 'light') root.classList.remove('dark')
+          else if (v === 'dark') root.classList.add('dark')
+          else if (window.matchMedia('(prefers-color-scheme: dark)').matches) root.classList.add('dark')
+          else root.classList.remove('dark')
+        } catch (e) {
+          document.documentElement.classList.remove('dark')
+        }
+      })()
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

@@ -1,0 +1,7 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+Disallow: /api/
+
+# Sitemap location is rewritten with the live origin during the build (see scripts/generate-seo.mjs).
+Sitemap: https://mayank-garg.vercel.app/sitemap.xml
