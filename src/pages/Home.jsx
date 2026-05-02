@@ -36,7 +36,7 @@ export function Home() {
   return (
     <div className="bg-white text-zinc-900 dark:bg-neutral-950 dark:text-zinc-100">
       <SEO
-        title={`${profile.heroTitle} & MERN Developer`}
+        fullTitle={`${profile.name} - ${profile.heroTitle}`}
         description={`${profile.name} — ${profile.heroTitle} based in ${profile.location}. ${profile.tagline}`}
         path="/"
         jsonLd={[buildPersonSchema(), buildWebsiteSchema()]}

@@ -13,7 +13,8 @@ import { defaultOgImage, profile, SITE_URL } from '../data/site'
  * defaults, and these per-page tags are an upgrade for JS-aware crawlers.
  *
  * Props:
- *   title         page-specific title (suffixed with the site name)
+ *   fullTitle     when set, used verbatim for <title> / OG / Twitter (no suffix)
+ *   title         page-specific title (suffixed with ` — ${profile.name}`) when fullTitle omitted
  *   description   meta description (≤ 160 chars ideally)
  *   path          path on the site, e.g. "/projects/foo" — used for canonical/OG URL
  *   image         absolute or root-relative OG image (default: defaultOgImage)
@@ -22,6 +23,7 @@ import { defaultOgImage, profile, SITE_URL } from '../data/site'
  *   jsonLd        optional JSON-LD object(s) — emits a <script type="application/ld+json">
  */
 export function SEO({
+  fullTitle: fullTitleProp,
   title,
   description,
   path = '/',
@@ -30,7 +32,9 @@ export function SEO({
   noindex = false,
   jsonLd,
 }) {
-  const fullTitle = title ? `${title} — ${profile.name}` : `${profile.name} — ${profile.heroTitle}`
+  const fullTitle =
+    fullTitleProp?.trim() ||
+    (title ? `${title} — ${profile.name}` : `${profile.name} — ${profile.heroTitle}`)
   const url = `${SITE_URL}${path.startsWith('/') ? path : `/${path}`}`
   const absoluteImage = /^https?:\/\//.test(image) ? image : `${SITE_URL}${image}`
   const ldNodes = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : []
