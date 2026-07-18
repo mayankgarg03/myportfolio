@@ -1,4 +1,5 @@
 import { BackToTop } from '../components/BackToTop'
+import { ChatAssistant } from '../components/ChatAssistant'
 import { Footer } from '../components/Footer'
 import { Navbar } from '../components/Navbar'
 import { PageTransition } from '../components/PageTransition'
@@ -17,6 +18,7 @@ export function MainLayout() {
       </main>
       <Footer />
       <BackToTop />
+      <ChatAssistant />
     </div>
   )
 }

@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { ContactForm } from '../components/ContactForm'
+import { HeroOverviewCard } from '../components/HeroOverviewCard'
 import { ProjectCard } from '../components/ProjectCard'
 import { SectionHeader } from '../components/SectionHeader'
 import { SEO, buildPersonSchema, buildWebsiteSchema } from '../components/SEO'
@@ -55,7 +56,7 @@ export function Home() {
         <div className="pointer-events-none absolute -right-32 top-1/4 h-96 w-96 rounded-full bg-sky-400/25 blur-[120px] dark:bg-sky-500/15" />
         <div className="pointer-events-none absolute -left-24 bottom-1/4 h-72 w-72 rounded-full bg-sky-300/20 blur-[100px] dark:bg-sky-600/10" />
 
-        <div className="relative z-10 mx-auto w-full max-w-6xl px-4 pb-24 pt-28 sm:px-6 lg:pt-32">
+        <div className="relative z-10 mx-auto grid w-full max-w-6xl items-center gap-12 px-4 pb-24 pt-28 sm:px-6 lg:grid-cols-[minmax(0,1fr)_minmax(16rem,20rem)] lg:gap-10 lg:pt-32 xl:grid-cols-[minmax(0,1fr)_22rem]">
           <motion.div
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
@@ -73,10 +74,6 @@ export function Home() {
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">{profile.tagline}</p>
             <p className="mt-3 font-mono text-sm text-sky-700 dark:text-sky-400/90">[ {bracketLine} ]</p>
-            <p className="mt-4 text-sm text-zinc-600 dark:text-zinc-500">
-              <span className="font-semibold text-zinc-900 dark:text-zinc-300">{profile.yearsExperience}+ years</span>{' '}
-              shipping production web apps
-            </p>
             <div className="mt-10 flex flex-wrap items-center gap-4">
               <Link
                 to="/projects"
@@ -101,6 +98,10 @@ export function Home() {
               </a>
             </div>
           </motion.div>
+
+          <div className="flex justify-center lg:justify-end">
+            <HeroOverviewCard />
+          </div>
         </div>
       </section>
 
@@ -150,8 +151,8 @@ export function Home() {
               </ul>
               <div className="mt-8 overflow-hidden rounded-2xl border border-sky-200/80 ring-1 ring-sky-100 dark:border-zinc-800 dark:ring-sky-500/10">
                 <img
-                  src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&q=80"
-                  alt=""
+                  src="/hobby.png"
+                  alt="Illustration reflecting interests and hobbies"
                   className="aspect-[4/3] w-full object-cover"
                   loading="lazy"
                 />

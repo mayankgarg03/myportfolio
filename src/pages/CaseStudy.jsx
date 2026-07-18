@@ -2,11 +2,11 @@ import { motion } from 'framer-motion'
 import { Link, useParams } from 'react-router-dom'
 import { CaseStudySection } from '../components/CaseStudySection'
 import { FeatureCard } from '../components/FeatureCard'
+import { ProjectCover } from '../components/ProjectCover'
 import { ProjectLinkButtonLarge } from '../components/ProjectLinkButton'
 import { SEO, buildBreadcrumbSchema } from '../components/SEO'
-import { SkillBadge } from '../components/SkillBadge'
 import { getProjectById } from '../data/projects'
-import { profile, SITE_URL } from '../data/site'
+import { defaultOgImage, profile, SITE_URL } from '../data/site'
 import { NotFound } from './NotFound'
 
 export function CaseStudy() {
@@ -17,7 +17,8 @@ export function CaseStudy() {
     return <NotFound />
   }
 
-  const { title, techStack, image, githubLink, liveLink, caseStudy: cs } = project
+  const { title, techStack, timeline, image, cover, githubLink, liveLink, caseStudy: cs } = project
+  const ogImage = image || defaultOgImage
 
   const breadcrumb = buildBreadcrumbSchema([
     { name: 'Home', path: '/' },
@@ -32,7 +33,7 @@ export function CaseStudy() {
     headline: title,
     description: cs.overview,
     url: `${SITE_URL}/projects/${id}`,
-    image,
+    image: ogImage,
     keywords: techStack.join(', '),
     author: { '@type': 'Person', name: profile.name, url: SITE_URL },
   }
@@ -43,46 +44,47 @@ export function CaseStudy() {
         title={title}
         description={cs.overview.slice(0, 200)}
         path={`/projects/${id}`}
-        image={image}
+        image={ogImage}
         type="article"
         jsonLd={[breadcrumb, articleSchema]}
       />
       <section className="border-b border-zinc-200 dark:border-zinc-900">
-        <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
+        <div className="mx-auto max-w-6xl px-4 pt-12 sm:px-6 sm:pt-16">
           <Link
             to="/#projects"
             className="inline-flex text-sm font-semibold text-sky-700 hover:underline dark:text-sky-400"
           >
             ← All projects
           </Link>
-          <p className="mt-6 text-xs font-semibold uppercase tracking-[0.2em] text-sky-700 dark:text-sky-400/90">
-            Project
-          </p>
-          <motion.h1
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="mt-3 text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-white"
-          >
-            {title}
-          </motion.h1>
-          <div className="mt-4 flex flex-wrap gap-2">
-            {techStack.map((t) => (
-              <SkillBadge key={t}>{t}</SkillBadge>
-            ))}
-          </div>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <ProjectLinkButtonLarge href={liveLink} label="Live demo" variant="primary" />
-            <ProjectLinkButtonLarge href={githubLink} label="GitHub" variant="secondary" />
-          </div>
+          {(liveLink || githubLink) && (
+            <div className="mt-6 flex flex-wrap gap-3">
+              <ProjectLinkButtonLarge href={liveLink} label="Live demo" variant="primary" />
+              <ProjectLinkButtonLarge href={githubLink} label="GitHub" variant="secondary" />
+            </div>
+          )}
         </div>
-        <div className="mx-auto max-w-6xl px-4 pb-12 sm:px-6 sm:pb-16">
+        <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-12">
           <motion.div
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.35 }}
-            className="overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-100 dark:border-zinc-800 dark:bg-zinc-950"
+            className="overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-800"
           >
-            <img src={image} alt="" className="aspect-[21/9] w-full object-cover" />
+            {image ? (
+              <div>
+                <img src={image} alt="" className="aspect-[21/9] w-full object-cover" />
+                <div className="border-t border-zinc-200 bg-sky-50/70 px-6 py-5 dark:border-zinc-800 dark:bg-zinc-900/50">
+                  <h1 className="text-2xl font-bold tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
+                    {title}
+                  </h1>
+                  {timeline && (
+                    <p className="mt-1.5 font-mono text-sm text-sky-700 dark:text-sky-400">{timeline}</p>
+                  )}
+                </div>
+              </div>
+            ) : cover ? (
+              <ProjectCover project={project} variant="hero" />
+            ) : null}
           </motion.div>
         </div>
       </section>
@@ -94,6 +96,7 @@ export function CaseStudy() {
             {cs.confidentialityNote}
           </aside>
         )}
+
         <CaseStudySection title="Overview" id="overview">
           <p>{cs.overview}</p>
         </CaseStudySection>
@@ -101,6 +104,21 @@ export function CaseStudy() {
         <CaseStudySection title="Problem" id="problem" delay={0.05}>
           <p>{cs.problem}</p>
         </CaseStudySection>
+
+        {cs.architecture?.length > 0 && (
+          <CaseStudySection title="Architecture" id="architecture" delay={0.06}>
+            <ul className="space-y-3">
+              {cs.architecture.map((item) => (
+                <li key={item} className="flex gap-2">
+                  <span className="mt-0.5 shrink-0 text-sky-600 dark:text-sky-400" aria-hidden>
+                    ▹
+                  </span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </CaseStudySection>
+        )}
 
         <CaseStudySection title="Approach" id="approach" delay={0.08}>
           <ol className="list-decimal space-y-3 pl-5 marker:text-sky-600 dark:marker:text-sky-400">

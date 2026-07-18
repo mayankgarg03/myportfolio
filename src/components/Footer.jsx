@@ -28,6 +28,21 @@ export function Footer() {
           >
             LinkedIn
           </a>
+          {profile.leetcodeUrl && (
+            <a
+              href={profile.leetcodeUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="text-zinc-600 transition hover:text-sky-700 dark:text-zinc-400 dark:hover:text-sky-400"
+            >
+              LeetCode
+              {profile.leetcodeSolved != null && (
+                <span className="ml-1 font-normal text-zinc-500 dark:text-zinc-500">
+                  · {profile.leetcodeSolved}
+                </span>
+              )}
+            </a>
+          )}
           <a
             href={profile.resumeUrl}
             download="Mayank_Garg_Resume.pdf"

@@ -25,20 +25,40 @@ export const profile = {
   greeting: "Hi, I'm Mayank",
   heroTitle: 'Senior Software Engineer',
   /** Rotated in typing animation alongside role */
-  roleVariants: ['Senior Software Engineer', 'MERN Developer'],
+  roleVariants: ['Backend Engineer', 'FullStack Engineer', 'AI Engineer', ],
   role: 'Senior Software Engineer / MERN Developer',
   tagline:
     'Building scalable apps with clean architecture, thoughtful APIs, and interfaces people enjoy using.',
   /** Shown in hero — full years since career start (Aug 2020) */
-  yearsExperience: 5,
+  yearsExperience: 6,
   /** Resolved URL to the bundled PDF (Vite import) */
   resumeUrl: resumePdf,
   githubUrl: 'https://github.com/mayankgarg03',
   linkedinUrl: 'https://www.linkedin.com/in/mayank-garg-ab7a26183',
+  /** LeetCode public profile */
+  leetcodeUrl: 'https://leetcode.com/u/mayankgarg03/',
+  /** Solved problems (shown in footer) */
+  // leetcodeSolved: 287,
   /** Optional Twitter/X handle (without @) — used for twitter:creator. Leave empty to omit. */
   twitterHandle: '',
   email: '',
   location: 'Delhi, India',
+}
+
+/** Hero right-column snapshot — keep short; details live in Experience / About */
+export const heroOverview = {
+  initials: 'MG',
+  roleShort: 'Senior Software Engineer',
+  openToWork: true,
+  stats: [
+    { label: 'Experience', value: '5+ yrs' },
+    { label: 'Focus', value: 'Fullstack JS & GenAI' },
+    // { label: 'Cloud/Infra', value: 'AWS · Microservices' },
+    // { label: 'Stack', value: 'Javascript · Python' },
+    { label: 'LeetCode', value: '300+ solved' },
+    { label: 'Domains', value: 'Banking · EdTech' },
+    { label: 'Projects', value: '6+ featured' },
+  ],
 }
 
 /**
@@ -53,11 +73,11 @@ export const heroBackgroundImage =
 
 export const heroTechBracket = [
   'React',
-  'Next.js',
   'Node.js',
   'Python',
   'AWS',
-  'Docker',
+  'AI Agents',
+  'LangChain',
 ]
 
 export const aboutIntro = `I'm a full-stack developer who cares about clarity — in code, in APIs, and in the product experience. I enjoy owning features end to end: from database shape to loading states that don't frustrate users.`
@@ -122,19 +142,56 @@ export const experienceTimeline = [
 ]
 
 /**
- * Tech stack (`#tech`) — three cards; keep aligned with what you use in production.
+ * Tech stack (`#tech`) — category bands; keep aligned with what you use in production.
  */
 export const skillCategories = [
   {
+    id: 'app',
     title: 'Application stack',
-    skills: ['React', 'Next.js', 'Node.js', 'Express', 'NestJS', 'Python'],
+    blurb: 'Languages and frameworks for product surfaces.',
+    skills: ['Javascript', 'React', 'Next.js', 'Node.js', 'Express', 'NestJS', 'Python'],
   },
   {
-    title: 'Data stores & messaging',
+    id: 'data',
+    title: 'Data & messaging',
+    blurb: 'Stores, search, cache, and event brokers.',
     skills: ['MySQL', 'PostgreSQL', 'MongoDB', 'Elasticsearch', 'Redis', 'Kafka', 'RabbitMQ'],
   },
   {
-    title: 'Cloud, platform & observability',
+    id: 'ai',
+    title: 'AI & agents',
+    blurb: 'Models, orchestration, tooling, and agent workflows.',
+    skills: [
+      'AI Agents',
+      'Tool Calling',
+      'LLM',
+      'LangChain',
+      'LangGraph',
+      'OpenAI',
+      'Claude',
+      'Google Gemini',
+      'Cursor',
+      'Codex',
+      'Claude Code',
+      'LiteLLM',
+      'MCP',
+      'Skills',
+    ],
+  },
+  {
+    id: 'architecture',
+    title: 'Architecture',
+    blurb: 'How systems are shaped, scaled, and connected.',
+    skills: [
+      'Microservices',
+      'Event-Driven Architecture',
+      'System Design',
+    ],
+  },
+  {
+    id: 'cloud',
+    title: 'Cloud & platform',
+    blurb: 'AWS, containers, and observability.',
     skills: [
       'AWS Lambda',
       'SQS',
@@ -185,7 +242,7 @@ export const skillShowcase = [
 ]
 
 export const projectCategories = [
-  { id: 'apps', label: 'Apps' },
+  { id: 'apps', label: 'Web Apps' },
   { id: 'websites', label: 'Websites' },
   { id: 'games', label: 'Games' },
 ]

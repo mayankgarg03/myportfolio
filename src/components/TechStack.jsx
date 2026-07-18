@@ -2,9 +2,9 @@ import { motion } from 'framer-motion'
 import { SectionHeader } from './SectionHeader'
 import { skillCategories } from '../data/site'
 
-/** Skills: `skillCategories` in `src/data/site.js` (three merged groups). */
+/** Skills: `skillCategories` in `src/data/site.js`. */
 
-function IconFrontend(props) {
+function IconApp(props) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" aria-hidden {...props}>
       <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h10M4 18h16" />
@@ -13,7 +13,7 @@ function IconFrontend(props) {
   )
 }
 
-function IconBackend(props) {
+function IconData(props) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" aria-hidden {...props}>
       <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14" />
@@ -27,7 +27,36 @@ function IconBackend(props) {
   )
 }
 
-function IconTools(props) {
+function IconAi(props) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" aria-hidden {...props}>
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z"
+      />
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456z"
+      />
+    </svg>
+  )
+}
+
+function IconArchitecture(props) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" aria-hidden {...props}>
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM13.5 6A2.25 2.25 0 0115.75 3.75H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 018.25 20.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25a2.25 2.25 0 01-2.25-2.25v-2.25z"
+      />
+    </svg>
+  )
+}
+
+function IconCloud(props) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" aria-hidden {...props}>
       <path
@@ -40,48 +69,59 @@ function IconTools(props) {
   )
 }
 
-const ACCENT_BY_INDEX = [
-  {
-    Icon: IconFrontend,
-    bar: 'bg-gradient-to-b from-sky-400 via-sky-500 to-sky-600',
-    iconWrap:
-      'bg-gradient-to-br from-sky-500/15 to-sky-600/5 text-sky-600 ring-sky-500/25 dark:from-sky-400/20 dark:to-sky-500/5 dark:text-sky-300 dark:ring-sky-400/20',
-    dot: 'bg-sky-500 dark:bg-sky-400',
+const ACCENT_BY_ID = {
+  app: {
+    Icon: IconApp,
+    rail: 'bg-sky-500 dark:bg-sky-400',
+    iconWrap: 'bg-sky-500/10 text-sky-700 ring-sky-500/20 dark:bg-sky-400/15 dark:text-sky-300 dark:ring-sky-400/25',
     chip:
-      'border-sky-200/90 bg-white text-zinc-800 shadow-sm shadow-sky-500/5 ring-1 ring-sky-500/10 transition group-hover:border-sky-300 group-hover:shadow-md group-hover:shadow-sky-500/10 dark:border-sky-500/25 dark:bg-sky-500/10 dark:text-sky-50 dark:ring-sky-400/15 dark:group-hover:border-sky-400/40',
+      'border-sky-200/80 bg-white text-zinc-800 hover:border-sky-400 hover:text-sky-900 dark:border-zinc-700 dark:bg-zinc-900/60 dark:text-zinc-200 dark:hover:border-sky-500/50 dark:hover:text-sky-100',
   },
-  {
-    Icon: IconBackend,
-    bar: 'bg-gradient-to-b from-emerald-400 via-emerald-500 to-teal-600',
+  data: {
+    Icon: IconData,
+    rail: 'bg-emerald-500 dark:bg-emerald-400',
     iconWrap:
-      'bg-gradient-to-br from-emerald-500/15 to-teal-600/5 text-emerald-600 ring-emerald-500/25 dark:from-emerald-400/20 dark:to-teal-500/5 dark:text-emerald-300 dark:ring-emerald-400/20',
-    dot: 'bg-emerald-500 dark:bg-emerald-400',
+      'bg-emerald-500/10 text-emerald-700 ring-emerald-500/20 dark:bg-emerald-400/15 dark:text-emerald-300 dark:ring-emerald-400/25',
     chip:
-      'border-emerald-200/90 bg-white text-zinc-800 shadow-sm shadow-emerald-500/5 ring-1 ring-emerald-500/10 transition group-hover:border-emerald-300 group-hover:shadow-md group-hover:shadow-emerald-500/10 dark:border-emerald-500/25 dark:bg-emerald-500/10 dark:text-emerald-50 dark:ring-emerald-400/15 dark:group-hover:border-emerald-400/40',
+      'border-emerald-200/80 bg-white text-zinc-800 hover:border-emerald-400 hover:text-emerald-900 dark:border-zinc-700 dark:bg-zinc-900/60 dark:text-zinc-200 dark:hover:border-emerald-500/50 dark:hover:text-emerald-100',
   },
-  {
-    Icon: IconTools,
-    bar: 'bg-gradient-to-b from-violet-400 via-violet-500 to-fuchsia-600',
+  ai: {
+    Icon: IconAi,
+    rail: 'bg-amber-500 dark:bg-amber-400',
     iconWrap:
-      'bg-gradient-to-br from-violet-500/15 to-fuchsia-600/5 text-violet-600 ring-violet-500/25 dark:from-violet-400/20 dark:to-fuchsia-500/5 dark:text-violet-300 dark:ring-violet-400/20',
-    dot: 'bg-violet-500 dark:bg-violet-400',
+      'bg-amber-500/10 text-amber-800 ring-amber-500/25 dark:bg-amber-400/15 dark:text-amber-300 dark:ring-amber-400/25',
     chip:
-      'border-violet-200/90 bg-white text-zinc-800 shadow-sm shadow-violet-500/5 ring-1 ring-violet-500/10 transition group-hover:border-violet-300 group-hover:shadow-md group-hover:shadow-violet-500/10 dark:border-violet-500/25 dark:bg-violet-500/10 dark:text-violet-50 dark:ring-violet-400/15 dark:group-hover:border-violet-400/40',
+      'border-amber-200/90 bg-amber-50/80 text-zinc-800 hover:border-amber-400 hover:text-amber-950 dark:border-amber-500/30 dark:bg-amber-500/10 dark:text-zinc-100 dark:hover:border-amber-400/60 dark:hover:text-amber-50',
   },
-]
+  architecture: {
+    Icon: IconArchitecture,
+    rail: 'bg-teal-500 dark:bg-teal-400',
+    iconWrap:
+      'bg-teal-500/10 text-teal-700 ring-teal-500/20 dark:bg-teal-400/15 dark:text-teal-300 dark:ring-teal-400/25',
+    chip:
+      'border-teal-200/80 bg-white text-zinc-800 hover:border-teal-400 hover:text-teal-900 dark:border-zinc-700 dark:bg-zinc-900/60 dark:text-zinc-200 dark:hover:border-teal-500/50 dark:hover:text-teal-100',
+  },
+  cloud: {
+    Icon: IconCloud,
+    rail: 'bg-zinc-500 dark:bg-zinc-400',
+    iconWrap: 'bg-zinc-500/10 text-zinc-700 ring-zinc-400/30 dark:bg-zinc-400/10 dark:text-zinc-300 dark:ring-zinc-500/30',
+    chip:
+      'border-zinc-200 bg-white text-zinc-800 hover:border-zinc-400 hover:text-zinc-950 dark:border-zinc-700 dark:bg-zinc-900/60 dark:text-zinc-200 dark:hover:border-zinc-500 dark:hover:text-white',
+  },
+}
 
 export function TechStack() {
   return (
     <section
       id="tech"
-      className="relative scroll-mt-24 overflow-hidden border-t border-sky-100 bg-gradient-to-b from-sky-50/80 via-white to-sky-50/30 px-4 py-20 dark:border-zinc-800 dark:from-zinc-900/40 dark:via-neutral-950 dark:to-zinc-900/20 sm:px-6 sm:py-28"
+      className="relative scroll-mt-24 overflow-hidden border-t border-sky-100 bg-gradient-to-b from-sky-50/70 via-white to-sky-50/40 px-4 py-20 dark:border-zinc-800 dark:from-zinc-900/40 dark:via-neutral-950 dark:to-zinc-900/25 sm:px-6 sm:py-28"
     >
       <div
-        className="pointer-events-none absolute -right-24 top-20 h-72 w-72 rounded-full bg-sky-300/30 blur-[100px] dark:bg-sky-600/15"
+        className="pointer-events-none absolute -right-24 top-16 h-80 w-80 rounded-full bg-sky-300/25 blur-[110px] dark:bg-sky-600/12"
         aria-hidden
       />
       <div
-        className="pointer-events-none absolute -left-20 bottom-24 h-64 w-64 rounded-full bg-violet-200/25 blur-[90px] dark:bg-violet-600/10"
+        className="pointer-events-none absolute -left-16 bottom-10 h-72 w-72 rounded-full bg-amber-200/20 blur-[100px] dark:bg-amber-500/8"
         aria-hidden
       />
 
@@ -93,56 +133,71 @@ export function TechStack() {
               Tools I reach for <span className="text-sky-600 dark:text-sky-400">every day</span>
             </>
           }
-          description="Languages & frameworks, data stores and brokers, then AWS and ops tooling — only what ships to production."
+          description="Application code, data layer, AI tooling, architecture patterns, and cloud ops — the stack that actually ships."
         />
 
-        <div className="mt-14 grid grid-cols-1 gap-8 lg:grid-cols-3">
+        <div className="mt-14 space-y-4">
           {skillCategories.map((cat, i) => {
-            const accent = ACCENT_BY_INDEX[i % ACCENT_BY_INDEX.length]
+            const accent = ACCENT_BY_ID[cat.id] ?? ACCENT_BY_ID.app
             const { Icon } = accent
+            const isAi = cat.id === 'ai'
+
             return (
-              <motion.article
-                key={cat.title}
-                initial={{ opacity: 0, y: 20 }}
+              <motion.div
+                key={cat.id}
+                initial={{ opacity: 0, y: 18 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-40px' }}
-                transition={{ duration: 0.45, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
-                className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-zinc-200/90 bg-white/90 shadow-lg shadow-zinc-200/40 backdrop-blur-sm dark:border-zinc-800 dark:bg-neutral-950/85 dark:shadow-black/40"
+                transition={{ duration: 0.4, delay: i * 0.06, ease: [0.22, 1, 0.36, 1] }}
+                className={`relative overflow-hidden rounded-2xl border ${
+                  isAi
+                    ? 'border-amber-200/90 bg-gradient-to-r from-amber-50/90 via-white to-white dark:border-amber-500/25 dark:from-amber-500/10 dark:via-neutral-950/90 dark:to-neutral-950/90'
+                    : 'border-zinc-200/80 bg-white/80 dark:border-zinc-800 dark:bg-neutral-950/70'
+                }`}
               >
-                <div className={`absolute left-0 top-0 h-full w-1 ${accent.bar}`} aria-hidden />
-                <div className="flex flex-1 flex-col p-6 pl-7 sm:p-7 sm:pl-8">
-                  <div className="flex items-start justify-between gap-3">
+                <div className={`absolute inset-y-0 left-0 w-1 ${accent.rail}`} aria-hidden />
+
+                <div className="grid gap-6 p-5 pl-6 sm:p-6 sm:pl-7 lg:grid-cols-[minmax(12rem,16rem)_1fr] lg:items-start lg:gap-10">
+                  <div className="flex items-start gap-3">
                     <div
-                      className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl ring-1 ${accent.iconWrap}`}
+                      className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl ring-1 ${accent.iconWrap}`}
                     >
-                      <Icon className="h-6 w-6" />
+                      <Icon className="h-5 w-5" />
                     </div>
-                    <span className="font-mono text-[0.7rem] font-medium tabular-nums tracking-widest text-zinc-400 dark:text-zinc-600">
-                      {String(i + 1).padStart(2, '0')}
-                    </span>
+                    <div className="min-w-0">
+                      <div className="flex items-baseline gap-2">
+                        <span className="font-mono text-[0.65rem] font-medium tracking-widest text-zinc-400 dark:text-zinc-600">
+                          {String(i + 1).padStart(2, '0')}
+                        </span>
+                        <h3 className="text-base font-bold tracking-tight text-zinc-900 dark:text-white">
+                          {cat.title}
+                        </h3>
+                      </div>
+                      {cat.blurb && (
+                        <p className="mt-1.5 text-sm leading-snug text-zinc-500 dark:text-zinc-500">{cat.blurb}</p>
+                      )}
+                    </div>
                   </div>
 
-                  <h3 className="mt-5 text-lg font-bold tracking-tight text-zinc-900 dark:text-white">{cat.title}</h3>
-                  <p className="mt-1 text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-500">
-                    {cat.skills.length} {cat.skills.length === 1 ? 'skill' : 'skills'}
-                  </p>
-
-                  <ul
-                    className={`mt-5 flex-1 gap-2.5 ${cat.skills.length > 4 ? 'grid grid-cols-1 sm:grid-cols-2' : 'flex flex-col'}`}
-                  >
-                    {cat.skills.map((skill) => (
-                      <li key={skill} className="min-w-0">
+                  <ul className="flex flex-wrap gap-2">
+                    {cat.skills.map((skill, skillIndex) => (
+                      <motion.li
+                        key={skill}
+                        initial={{ opacity: 0, scale: 0.96 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: i * 0.04 + skillIndex * 0.02, duration: 0.25 }}
+                      >
                         <span
-                          className={`flex min-h-[2.35rem] w-full items-center gap-2.5 rounded-xl border px-2.5 py-1.5 text-sm font-medium leading-snug sm:min-h-0 sm:py-2 sm:pl-3 ${accent.chip}`}
+                          className={`inline-flex items-center rounded-lg border px-3 py-1.5 text-sm font-medium transition ${accent.chip}`}
                         >
-                          <span className={`h-1.5 w-1.5 shrink-0 rounded-full ${accent.dot}`} />
-                          <span className="min-w-0 break-words">{skill}</span>
+                          {skill}
                         </span>
-                      </li>
+                      </motion.li>
                     ))}
                   </ul>
                 </div>
-              </motion.article>
+              </motion.div>
             )
           })}
         </div>

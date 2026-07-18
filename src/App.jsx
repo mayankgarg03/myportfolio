@@ -2,6 +2,7 @@ import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { ThemeProvider } from './contexts/ThemeContext'
+import { useAssistantHealthCheck } from './hooks/useAssistantHealthCheck'
 import { MainLayout } from './layouts/MainLayout'
 import { About } from './pages/About'
 import { CaseStudy } from './pages/CaseStudy'
@@ -15,6 +16,8 @@ import { Projects } from './pages/Projects'
  * Analytics + SpeedInsights are no-ops outside Vercel and require zero config.
  */
 function App() {
+  useAssistantHealthCheck();
+
   return (
     <ThemeProvider>
       <BrowserRouter>

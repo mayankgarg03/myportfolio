@@ -100,7 +100,7 @@ export function buildPersonSchema() {
       '@type': 'PostalAddress',
       addressLocality: profile.location,
     },
-    sameAs: [profile.githubUrl, profile.linkedinUrl].filter(Boolean),
+    sameAs: [profile.githubUrl, profile.linkedinUrl, profile.leetcodeUrl].filter(Boolean),
   }
 }
 
